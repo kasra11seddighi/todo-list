@@ -1,5 +1,5 @@
 /* ======================= */
-/* responsive.css */
+/* responsive.css تاریک نهایی */
 /* ======================= */
 
 /* Reset و تنظیمات پایه */
@@ -12,7 +12,8 @@
 body {
   font-family: sans-serif;
   line-height: 1.5;
-  background-color: #f5f5f5;
+  background-color: #121010;
+  color: #eee;
 }
 
 /* Wrapper و عنوان */
@@ -28,7 +29,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* دکمه‌ها */
+/* Header Buttons */
 .header-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -52,7 +53,7 @@ body {
   background-color: #40a9ff;
 }
 
-/* منوی مرتب‌سازی */
+/* Sort menu */
 .sort-card {
   position: relative;
 }
@@ -62,8 +63,8 @@ body {
   position: absolute;
   top: 2.5rem;
   right: 0;
-  background: white;
-  border: 1px solid #ccc;
+  background: #1c1c1c;
+  border: 1px solid #333;
   border-radius: 5px;
   overflow: hidden;
   z-index: 10;
@@ -77,11 +78,12 @@ body {
   text-align: right;
   border: none;
   background: none;
+  color: #eee;
   cursor: pointer;
 }
 
 .sort-menu button:hover {
-  background-color: #f0f0f0;
+  background-color: #333;
 }
 
 /* Container تودوها */
@@ -92,13 +94,13 @@ body {
 }
 
 /* ======================= */
-/* کارت تودو */
+/* کارت تودو تاریک */
 /* ======================= */
 .todo {
   background-color: #1b1414;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -129,7 +131,7 @@ body {
   display: none;
   width: 20px;
   height: 20px;
-  color: green;
+  color: #52c41a;
 }
 
 /* وقتی تودو تکمیل شد */
@@ -182,7 +184,7 @@ body {
 }
 
 /* ======================= */
-/* مدال */
+/* مدال تاریک و ریسپانسیو */
 /* ======================= */
 .modal-screen {
   display: flex;
@@ -190,18 +192,21 @@ body {
   align-items: center;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.6);
   padding: 1rem;
+  z-index: 100;
 }
 
 .modal {
-  background: rgb(20, 18, 18);
+  background: #141212;
   width: 100%;
   max-width: 400px;
   border-radius: 10px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 
 .modal header,
@@ -222,6 +227,39 @@ body {
   font-size: 1rem;
   border: 1px solid #1b1616;
   border-radius: 5px;
+  background-color: #1b1616;
+  color: #eee;
+}
+
+.modal footer {
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.modal footer button {
+  flex: 1;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.modal footer button.cancel {
+  background-color: #930002;
+}
+
+.modal footer button.cancel:hover {
+  background-color: #8c0200;
+}
+
+.modal footer button.create {
+  background-color: #153d01;
+}
+
+.modal footer button.create:hover {
+  background-color: #21231f;
 }
 
 /* ======================= */
@@ -286,7 +324,16 @@ body {
     padding: 0.3rem 0;
   }
 
-  .modal input.input {
+  .modal {
+    max-width: 95%;
+    padding: 0.5rem;
+  }
+
+  .modal main input.input {
+    font-size: 0.9rem;
+  }
+
+  .modal footer button {
     font-size: 0.9rem;
   }
 }
