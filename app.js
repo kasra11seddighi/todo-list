@@ -39,7 +39,7 @@ function addTodo() {
 
 function showTodos() {
   todosContainer.innerHTML = "";
-
+if(todos.length){
   todos.forEach(function (todo) {
     todosContainer.insertAdjacentHTML(
       "beforeend",
@@ -69,7 +69,10 @@ function showTodos() {
     );
   });
 }
-
+else{
+  todosContainer.innerHTML = `<h1 style="text-align:center;">Nothing to do found.<h1>`; 
+}
+}
 
 
 function saveInToLocalStorage(todosArray) {
