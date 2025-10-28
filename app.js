@@ -60,13 +60,16 @@ function showTodos() {
 
         <div class="todo-buttons">
           <button class="delete" onclick="deleteTodo(${todo.id})">حذف</button>
-          <button class="complete" onclick="todoComplete(${todo.id})">تکمیل</button>
+          <button class="complete" onclick="todoComplete(${todo.id})">
+            ${todo.isComplete ? 'لغو' : 'تکمیل'}
+          </button>
         </div>
       </article>
       `
     );
   });
 }
+
 
 
 function saveInToLocalStorage(todosArray) {
