@@ -4,12 +4,14 @@ const cancelTodoBtn = document.querySelector(".cancel");
 const createTodoBtn = document.querySelector(".create");
 const todoInput = document.querySelector(".input");
 const todosContainer = document.querySelector(".todos-container");
-const todoTitle = document.querySelector(".todo-title")
+const todoTitle = document.querySelector(".todo-title");
+const sortBtns = document.querySelectorAll(".sort-menu button");
+const sortTypeElem = document.querySelector(".sort-type");
 let todos = [];
 
 if (localStorage.getItem("todos")) {
   todos = JSON.parse(localStorage.getItem("todos"));
-  showTodos();
+  showTodos(todos);
 }
 
 function showModal() {
@@ -33,13 +35,13 @@ function addTodo() {
   todoInput.value = "";
 
   saveInToLocalStorage(todos);
-  showTodos();
+  showTodos(todos);
   hideModal();
 }
 
-function showTodos() {
+function showTodos(shownTodos) {
   todosContainer.innerHTML = "";
-if(todos.length){
+if(shownTodos.length){
   todos.forEach(function (todo) {
     todosContainer.insertAdjacentHTML(
       "beforeend",
@@ -109,8 +111,44 @@ function deleteTodo(todoId) {
   saveInToLocalStorage(todos);
 
   // بروزرسانی نمایش
-  showTodos();
+  showTodos(todos);
 }
+
+function todoSortHandler(event) {
+  const sortType = event.target.value;
+  const sortTitle = event.target.innerHTML;
+
+  switch (sortType) {
+    case "completed": {
+      const completedTodos = todos.filter(function (todo) {
+        return todo.isComplete === true;
+      });
+
+      sortTypeElem.innerHTML = sortTitle;
+      showTodos(completedTodos);
+      break;
+    }
+
+    case "uncompleted": {
+      const unCompletedTodos = todos.filter(function (todo) {
+        return todo.isComplete === false;
+      });
+
+      sortTypeElem.innerHTML = sortTitle;
+      showTodos(unCompletedTodos);
+      break;
+    }
+
+    default: {
+      sortTypeElem.innerHTML = sortTitle;
+      showTodos(todos);
+    }
+  }
+}
+
+sortBtns.forEach(function (sortBtn) {
+  sortBtn.addEventListener("click", todoSortHandler);
+});
 
 openModalBtn.addEventListener("click", showModal);
 cancelTodoBtn.addEventListener("click", hideModal);
