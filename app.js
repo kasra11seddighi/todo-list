@@ -45,40 +45,41 @@ function addTodo() {
 
 function showTodos(shownTodos) {
   todosContainer.innerHTML = "";
-if(shownTodos.length){
-  todos.forEach(function (todo) {
-    todosContainer.insertAdjacentHTML(
-      "beforeend",
-      `
-      <article class="todo ${todo.isComplete ? 'complete' : ''}" data-id="${todo.id}">
-        <div class="todo-data">
-          <div class="checkbox">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
-              </svg>
-            </span>
-          </div>
-          <div>
-            <p class="todo-title">${todo.title}</p>
-          </div>
-        </div>
 
-        <div class="todo-buttons">
-          <button class="delete" onclick="deleteTodo(${todo.id})">حذف</button>
-          <button class="complete" onclick="todoComplete(${todo.id})">
-            ${todo.isComplete ? 'لغو' : 'تکمیل'}
-          </button>
-        </div>
-      </article>
-      `
-    );
-  });
+  if (shownTodos.length) {
+    shownTodos.forEach(function (todo) {
+      todosContainer.insertAdjacentHTML(
+        "beforeend",
+        `
+        <article class="todo ${todo.isComplete ? 'complete' : ''}" data-id="${todo.id}">
+          <div class="todo-data">
+            <div class="checkbox">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"/>
+                </svg>
+              </span>
+            </div>
+            <div>
+              <p class="todo-title">${todo.title}</p>
+            </div>
+          </div>
+
+          <div class="todo-buttons">
+            <button class="delete" onclick="deleteTodo(${todo.id})">حذف</button>
+            <button class="complete" onclick="todoComplete(${todo.id})">
+              ${todo.isComplete ? 'لغو' : 'تکمیل'}
+            </button>
+          </div>
+        </article>
+        `
+      );
+    });
+  } else {
+    todosContainer.innerHTML = `<h1 style="text-align:center;">هیچ تودویی پیدا نشد 😴</h1>`; 
+  }
 }
-else{
-  todosContainer.innerHTML = `<h1 style="text-align:center;">Nothing to do found.<h1>`; 
-}
-}
+
 
 
 function saveInToLocalStorage(todosArray) {
@@ -182,3 +183,4 @@ sortBtns.forEach(function (sortBtn) {
 openModalBtn.addEventListener("click", showModal);
 cancelTodoBtn.addEventListener("click", hideModal);
 createTodoBtn.addEventListener("click", addTodo);
+
