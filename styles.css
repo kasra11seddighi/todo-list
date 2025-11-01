@@ -415,3 +415,54 @@ body {
   border-left: 3px solid #00ff80; /* برجسته‌تر روی هاور */
   transform: translateX(3px);
 }
+
+/* ======================= */
+/* Cyberpunk Neon Clock */
+/* ======================= */
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  font-family: 'Vazir', sans-serif;
+  .timer {
+  direction: ltr; /* ترتیب چپ به راست */
+}
+
+}
+
+.timer p {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #6ac6ff;
+  text-shadow: 
+    0 0 8px #6ac6ff,
+    0 0 16px #b085f5,
+    0 0 32px #6ac6ff;
+  animation: clockPulse 2s infinite alternate;
+}
+
+.timer span {
+  font-size: 2rem;
+  color: #ffffffaa;
+  text-shadow: 0 0 6px #6ac6ff;
+  margin: 0 2px;
+}
+
+/* افکت پالس برای اعداد */
+@keyframes clockPulse {
+  0% {
+    text-shadow: 
+      0 0 8px #6ac6ff,
+      0 0 16px #b085f5;
+    transform: scale(1);
+  }
+  100% {
+    text-shadow: 
+      0 0 14px #b085f5,
+      0 0 30px #6ac6ff;
+    transform: scale(1.05);
+  }
+}
